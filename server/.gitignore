@@ -1,0 +1,21 @@
+# Dépendances
+node_modules/
+
+# Variables d'environnement (TRÈS IMPORTANT : ne pas envoyer tes mots de passe DB)
+.env
+.env.local
+.env.production
+
+# Logs
+logs
+*.log
+npm-debug.log*
+
+# Fichiers système et IDE
+.DS_Store
+.vscode/
+.idea/
+
+# Fichiers de build (si tu utilises TypeScript ou un bundler)
+dist/
+build/

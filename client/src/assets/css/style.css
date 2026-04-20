@@ -1,0 +1,90 @@
+:root {
+  --primary-glow: #a855f7;
+  --secondary-glow: #6366f1;
+  --bg-dark: #050505;
+  --card-bg: #111111;
+}
+
+body {
+  background-color: var(--bg-dark);
+  color: #ffffff;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.logo-glow {
+  color: white;
+  text-transform: uppercase;
+  font-weight: 800;
+  letter-spacing: 2px;
+  text-shadow:
+    0 0 10px var(--primary-glow),
+    0 0 20px var(--secondary-glow);
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 30px;
+  transition: all 0.4s ease;
+}
+
+.glass-card:hover {
+  border-color: var(--primary-glow);
+  box-shadow: 0 0 30px rgba(168, 85, 247, 0.15);
+  transform: translateY(-10px);
+}
+
+.btn-premium {
+  background: linear-gradient(
+    45deg,
+    var(--primary-glow),
+    var(--secondary-glow)
+  );
+  border: none;
+  color: white;
+  padding: 12px 30px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: 0.3s;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-premium:hover {
+  box-shadow: 0 0 25px var(--primary-glow);
+  transform: scale(1.05);
+  color: white;
+}
+/* Couleur du lien de la page actuelle */
+.active-custom {
+  color: var(--primary-glow) !important; /* Utilise le violet de ton design */
+  font-weight: 800;
+  text-transform: uppercase;
+  position: relative;
+}
+
+/* Petit trait brillant sous le lien actif */
+.active-custom::after {
+  content: "";
+  position: absolute;
+  bottom: -5px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background: var(--primary-glow);
+  box-shadow: 0 0 10px var(--primary-glow);
+}
+
+/* Style des autres liens au survol */
+.nav-link:hover {
+  color: rgba(255, 255, 255, 0.8) !important;
+  transition: 0.3s;
+}
+
+/* Animation douce pour le logo */
+.logo-glow:hover {
+  text-shadow: 0 0 15px var(--primary-glow);
+  transition: 0.5s;
+}
