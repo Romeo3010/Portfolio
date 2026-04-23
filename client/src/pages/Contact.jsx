@@ -13,9 +13,8 @@ export default function Contact() {
     e.preventDefault();
     setStatus("Envoi...");
     try {
-      // Assure-toi que ton backend est lancé sur le port 5000
       await axios.post("http://localhost:5000/api/contact", formData);
-      setStatus("✅ Message envoyé avec succès !");
+      setStatus("✅ Message envoyé  !");
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {
       setStatus("❌ Erreur serveur. Réessayez plus tard.");
@@ -24,7 +23,6 @@ export default function Contact() {
 
   return (
     <section className="container py-5 text-white" id="contact">
-      {/* En-tête de section */}
       <div className="text-center mb-5">
         <h2 className="fw-bold text-uppercase">
           Me <span className="logo-glow">Contacter</span>
@@ -41,19 +39,19 @@ export default function Contact() {
       </div>
 
       <div className="row g-5">
-        {/* GAUCHE : COORDONNÉES ET BOUTONS CTA */}
         <div className="col-lg-5">
           <div
             className="glass-card p-4 h-100"
             style={{
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: "20px",
+              background: "rgba(255,255,255,0.02)",
             }}
           >
             <h4 className="mb-4 text-white fw-bold">Mes coordonnées</h4>
             <p className="text-secondary small mb-4">
               Besoin d'une réponse rapide ? Utilisez l'un des boutons ci-dessous
-              pour me joindre directement sur vos applications préférées.
+              pour me joindre directement.
             </p>
 
             <div className="d-flex flex-column gap-3">
@@ -72,11 +70,11 @@ export default function Contact() {
                   ></i>
                   <div>
                     <div className="small text-secondary">WhatsApp</div>
-                    <div className="fw-bold">+261 34 00 000 00</div>
+                    <div className="fw-bold">+261 34 97 422 14</div>
                   </div>
                 </div>
                 <a
-                  href="https://wa.me/261340000000"
+                  href="https://wa.me/261349742214"
                   target="_blank"
                   rel="noreferrer"
                   className="btn btn-sm w-100 mt-2 py-2"
@@ -87,12 +85,12 @@ export default function Contact() {
                     borderRadius: "8px",
                   }}
                 >
-                  <i className="fa-solid fa-paper-plane me-2"></i>Envoyez-moi un
+                  <i className="fa-solid fa-paper-plane me-2"></i>Envoyer un
                   message
                 </a>
               </div>
 
-              {/* Messenger / Facebook */}
+              {/* Messenger */}
               <div
                 className="contact-card p-3"
                 style={{
@@ -107,11 +105,11 @@ export default function Contact() {
                   ></i>
                   <div>
                     <div className="small text-secondary">Messenger</div>
-                    <div className="fw-bold">Sitraka Roméo</div>
+                    <div className="fw-bold">Sitraka Rakotoarisoa</div>
                   </div>
                 </div>
                 <a
-                  href="https://m.me/votre_username"
+                  href="https://m.me/sitraka.rakotoarisoa.414945"
                   target="_blank"
                   rel="noreferrer"
                   className="btn btn-sm w-100 mt-2 py-2"
@@ -122,11 +120,10 @@ export default function Contact() {
                     borderRadius: "8px",
                   }}
                 >
-                  Discuter sur Facebook
+                  Discuter sur Messenger
                 </a>
               </div>
 
-              {/* Gmail Direct */}
               <div
                 className="contact-card p-3"
                 style={{
@@ -141,13 +138,15 @@ export default function Contact() {
                   ></i>
                   <div>
                     <div className="small text-secondary">Email personnel</div>
-                    <div className="fw-bold text-break">
-                      votremail@gmail.com
+                    <div className="fw-bold text-break small">
+                      sitrakasitrakaromeo@gmail.com
                     </div>
                   </div>
                 </div>
                 <a
-                  href="mailto:votremail@gmail.com"
+                  href="https://mail.google.com/mail/?view=cm&fs=1&to=sitrakasitrakaromeo@gmail.com&su=Contact+depuis+Portfolio"
+                  target="_blank"
+                  rel="noreferrer"
                   className="btn btn-sm w-100 mt-2 py-2"
                   style={{
                     background: "rgba(234, 67, 53, 0.1)",
@@ -156,7 +155,7 @@ export default function Contact() {
                     borderRadius: "8px",
                   }}
                 >
-                  Ouvrir ma messagerie
+                  Ouvrir Gmail
                 </a>
               </div>
 
@@ -172,11 +171,11 @@ export default function Contact() {
                   <i className="fa-brands fa-github fs-4 me-3 text-white"></i>
                   <div>
                     <div className="small text-secondary">GitHub</div>
-                    <div className="fw-bold">@votre_github</div>
+                    <div className="fw-bold">@Romeo3010</div>
                   </div>
                 </div>
                 <a
-                  href="https://github.com/votre_github"
+                  href="https://github.com/Romeo3010"
                   target="_blank"
                   rel="noreferrer"
                   className="btn btn-sm w-100 mt-2 py-2 text-white"
@@ -186,20 +185,20 @@ export default function Contact() {
                     borderRadius: "8px",
                   }}
                 >
-                  Voir mes dépôts
+                  Voir mes projets
                 </a>
               </div>
             </div>
           </div>
         </div>
 
-        {/* DROITE : FORMULAIRE DE CONTACT */}
         <div className="col-lg-7">
           <div
             className="glass-card p-4 h-100"
             style={{
               border: "1px solid rgba(255,255,255,0.1)",
               borderRadius: "20px",
+              background: "rgba(255,255,255,0.02)",
             }}
           >
             <h4 className="mb-4 text-white fw-bold">Écrivez-moi</h4>
@@ -209,13 +208,14 @@ export default function Contact() {
                   Votre nom complet
                 </label>
                 <input
+                  type="text"
                   className="form-control bg-dark border-secondary text-white py-2"
-                  placeholder="Ex: Jean Dupont"
                   value={formData.name}
                   onChange={(e) =>
                     setFormData({ ...formData, name: e.target.value })
                   }
                   required
+                  placeholder="Jean Dupont"
                 />
               </div>
               <div className="mb-3">
@@ -225,12 +225,12 @@ export default function Contact() {
                 <input
                   type="email"
                   className="form-control bg-dark border-secondary text-white py-2"
-                  placeholder="nom@exemple.com"
                   value={formData.email}
                   onChange={(e) =>
                     setFormData({ ...formData, email: e.target.value })
                   }
                   required
+                  placeholder="nom@exemple.com"
                 />
               </div>
               <div className="mb-3">
@@ -249,20 +249,24 @@ export default function Contact() {
                 />
               </div>
               <button
+                type="submit"
+                disabled={status === "Envoi..."}
                 className="btn w-100 py-3 fw-bold text-white shadow-lg"
                 style={{
                   borderRadius: "12px",
-                  background: "var(--primary-glow)",
+                  background:
+                    status === "Envoi..." ? "#666" : "var(--primary-glow)",
                   border: "none",
                   transition: "0.3s",
                 }}
               >
-                Envoyer le formulaire{" "}
+                {status === "Envoi..."
+                  ? "envoi en cours..."
+                  : "Envoyer le message"}
                 <i className="fa-solid fa-paper-plane ms-2"></i>
               </button>
             </form>
-
-            {status && (
+            {status && status !== "Envoi..." && (
               <div
                 className={`mt-4 p-3 rounded text-center fw-medium ${status.includes("✅") ? "bg-success text-white" : "bg-danger text-white"} bg-opacity-25`}
               >
@@ -273,24 +277,12 @@ export default function Contact() {
         </div>
       </div>
 
-      {/* Styles internes pour les effets de survol */}
       <style>{`
-        .contact-card {
-          transition: transform 0.3s ease, background 0.3s ease;
-        }
-        .contact-card:hover {
-          transform: translateY(-5px);
-          background: rgba(255, 255, 255, 0.08) !important;
-        }
-        .form-control:focus {
-          background-color: #111 !important;
-          border-color: var(--primary-glow) !important;
-          box-shadow: 0 0 10px rgba(168, 85, 247, 0.2);
-          color: white;
-        }
-        .btn:hover {
-          filter: brightness(1.2);
-        }
+        .contact-card { transition: transform 0.3s ease, background 0.3s ease; }
+        .contact-card:hover { transform: translateY(-5px); background: rgba(255, 255, 255, 0.08) !important; }
+        .form-control { background-color: rgba(0,0,0,0.2) !important; }
+        .form-control:focus { background-color: #111 !important; border-color: #a855f7 !important; box-shadow: 0 0 10px rgba(168, 85, 247, 0.2); color: white; }
+        .btn:hover:not(:disabled) { filter: brightness(1.2); transform: scale(1.01); }
       `}</style>
     </section>
   );

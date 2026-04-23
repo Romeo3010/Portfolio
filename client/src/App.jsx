@@ -17,7 +17,7 @@ function App() {
         className="d-flex flex-column min-vh-100"
         style={{ background: "#050505" }}
       >
-        {/* HEADER AMÉLIORÉ */}
+        {/* --- NAVBAR --- */}
         <nav
           className="navbar navbar-expand-lg navbar-dark sticky-top"
           style={{
@@ -74,7 +74,7 @@ function App() {
                         ? "nav-link active-custom"
                         : "nav-link text-uppercase fw-bold"
                     }
-                    to="/projets"
+                    to="/projects"
                   >
                     PROJETS
                   </NavLink>
@@ -93,10 +93,12 @@ function App() {
                 </li>
               </ul>
 
-              {/* Bouton CV rapide dans le header comme sur ton PHP */}
+              {/* Bouton CV du Header (Fonctionne sur toutes les pages) */}
               <div className="d-none d-lg-block">
                 <button
                   className="btn btn-cv-header px-4 py-2"
+                  data-bs-toggle="modal"
+                  data-bs-target="#cvModal"
                   style={{
                     background: "rgba(168, 85, 247, 0.1)",
                     border: "1px solid var(--primary-glow)",
@@ -111,17 +113,74 @@ function App() {
           </div>
         </nav>
 
-        {/* CONTENU QUI S'ADAPTE */}
+        {/* --- ROUTES (CONTENU DYNAMIQUE) --- */}
         <main className="flex-grow-1">
           <Routes>
             <Route path="/" element={<Home />} />
-            <Route path="/projets" element={<Projects />} />
+            <Route path="/projects" element={<Projects />} />
             <Route path="/competences" element={<Skills />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
         </main>
 
-        {/* FOOTER STICKY */}
+        {/* --- MODALE CV GLOBALE --- */}
+        <div
+          className="modal fade"
+          id="cvModal"
+          tabIndex="-1"
+          aria-hidden="true"
+        >
+          <div className="modal-dialog modal-xl modal-dialog-centered">
+            <div
+              className="modal-content"
+              style={{
+                background: "#0f0f0f",
+                border: "1px solid rgba(255,255,255,0.1)",
+                borderRadius: "20px",
+              }}
+            >
+              <div className="modal-header border-bottom border-secondary p-3">
+                <h5 className="modal-title text-white small fw-bold text-uppercase">
+                  <i className="fa-solid fa-eye me-2"></i> Aperçu du CV
+                </h5>
+                <button
+                  type="button"
+                  className="btn-close btn-close-white"
+                  data-bs-dismiss="modal"
+                  aria-label="Close"
+                ></button>
+              </div>
+              <div className="modal-body p-0" style={{ height: "75vh" }}>
+                <iframe
+                  src="/assets/documents/mon_cv.pdf"
+                  width="100%"
+                  height="100%"
+                  style={{ border: "none" }}
+                  title="Mon CV"
+                />
+              </div>
+              <div className="modal-footer border-top border-secondary">
+                <button
+                  type="button"
+                  className="btn btn-secondary"
+                  data-bs-dismiss="modal"
+                >
+                  Fermer
+                </button>
+                <a
+                  href="/assets/documents/mon_cv.pdf"
+                  download
+                  className="btn btn-primary"
+                  style={{ background: "var(--primary-glow)", border: "none" }}
+                >
+                  Télécharger
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* --- FOOTER --- */}
         <footer
           className="py-4 border-top border-secondary text-center mt-auto"
           style={{
